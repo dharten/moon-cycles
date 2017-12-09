@@ -30,31 +30,33 @@ class Form extends Component {
     // state
     let state = this.state.state
     this.props.getLunarData(date, city, state)
-    this.setState({ date: "", state: "", city: ""})
+    this.setState({ date: "",  city: "", state: ""})
   }
 
   render() {
     return(
-      <form onSubmit={ this.handleSubmit }>
+      <form onSubmit={ this.handleSubmit } className="form">
         <br></br>
-        <label>Date</label>
+        <label className="label">Date</label>
         <input
           type="date"
           name="date"
           value={ this.state.date }
           onChange={ this.handleInputs }
+          className="input"
         />
         <br></br>
-        <label>Enter a city</label>
+        <label className="label">Enter a city</label>
         <input
           type="text"
           name="city"
           value={ this.state.city }
           onChange={ this.handleInputs }
+          className="input"
         />
         <br></br>
-        <label>Select a State</label>
-        <select name="state" id="st" onChange={ this.handleInputs }>
+        <label className="label">Select a State</label>
+        <select name="state" id="st" onChange={ this.handleInputs } className="input">
           <option value=""></option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -115,9 +117,10 @@ class Form extends Component {
         </select>
         <br></br>
         <button>Submit</button>
+        <h4>{ this.props.lunarData.failure }</h4>
       </form>
     )
   }
 }
 
-export default connect(null, { getLunarData })(Form);
+export default connect(state => state , { getLunarData })(Form);

@@ -1,0 +1,55 @@
+body {
+  background-repeat: no-repeat;
+  min-width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: blue;
+  text-align: center;
+}
+
+h4 {
+  color: red;
+  font-weight:100;
+}
+
+h3 {
+  color: blue;
+  font-family: monospace;
+  text-align: left|justify;
+}
+
+.form {
+  /*border: white solid 2px;*/
+  width: 200px;
+  margin: 20px 80px 20px auto;
+  padding: 10px;
+  background-color: #80808017;
+  border-radius: 10%;
+}
+
+.form .input {
+  width: 130px;
+  margin: 1px;
+}
+
+.form .label {
+  /*padding-left:1px;*/
+    width:100px;
+    /*text-transform: uppercase;*/
+    display:inline-block;
+}
+
+.moonData {
+  /*margin-left: 70%;*/
+  float: right;
+  margin-top: 25%;
+  margin-right: 50px;
+  font-size: 1.7em;
+}
+
+.sunData {
+  display: block;
+  font-size: 1.7em;
+  margin-left: 100px;
+}

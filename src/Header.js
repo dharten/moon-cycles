@@ -28,12 +28,10 @@ const styles = {
 export default function Header() {
   return(
     <div style={ styles }>
-      {/* <img src={ flowerOfLife } style={ styles.img } alt=""/> */}
       <img src={"http://api.usno.navy.mil/imagery/moon.png?date=today&time=now"}
         style={ styles.img }
         alt=""/>
       <span style={ styles.lWord }>Current Moon Phase</span>
-      {/* <span style={ styles.rWord }>Poetry</span> */}
     </div>
   )
 }

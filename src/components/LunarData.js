@@ -2,16 +2,21 @@ import React, {Component} from "react";
 import Form from "./Form";
 
 import {connect} from "react-redux";
-import {getLunarData} from "../redux/data";
+import {getLunarData, initialLoad} from "../redux/data";
 
 class LunarData extends Component {
 
-  componentDidMount() {
-    this.props.getLunarData(this.state);
+  // componentDidMount() {
+  //   this.props.initialLoad(this.state);
+  // }
+
+  componentWillMount() {
+    document.body.style.backgroundImage = 'url("https://rajusudhakar.files.wordpress.com/2016/09/sun-and-moon.jpg")'
   }
 
   render() {
-    const moonData = this.props.lunarData.moondata.map((data, i) => {
+    const view = this.props.lunarData
+    const moonData = view.moondata.map((data, i) => {
       switch (data.phen) {
         case "R":
           return (
@@ -40,7 +45,7 @@ class LunarData extends Component {
       }
     })
 
-    const sunData = this.props.lunarData.sundata.map((data, i) => {
+    const sunData = view.sundata.map((data, i) => {
       switch (data.phen) {
         case "R":
           return (
@@ -58,9 +63,8 @@ class LunarData extends Component {
             <table key={ data.time + i }>
               <tbody>
                 <tr>
-                  <th></th>
-                    <td>Set</td>
-                    <td>{ data.time }</td>
+                  <td>Set</td>
+                  <td>{ data.time }</td>
                 </tr>
               </tbody>
             </table>
@@ -73,17 +77,23 @@ class LunarData extends Component {
     return(
       <div>
         <Form />
-        <p>{ this.props.lunarData.city }, { this.props.lunarData.state }</p>
-        <table>
+        <h3>{ view.dayofweek } { view.month }{ view.day && "/"}{ view.day }{ view.day && "/"}{ view.year }</h3>
+        <h3>{ view.city }{ view.city && ","} { view.state }</h3>
+        <h3>{ view.day && "Latitude" } { view.lat } { view.day && "Longitude" } { view.lon }</h3>
+        <table className="moonData">
           <tbody>
             <tr>
-              <th colSpan="6">Moon Data</th>
+              <th>Moon Data</th>
             </tr>
             <tr>
               <td>{ moonData }</td>
             </tr>
+          </tbody>
+        </table>
+        <table className="sunData">
+          <tbody>
             <tr>
-              <th colSpan="6">Sun Data</th>
+              <th>Sun Data</th>
             </tr>
             <tr>
               <td>{ sunData }</td>
@@ -95,4 +105,4 @@ class LunarData extends Component {
   }
 }
 
-export default connect(state => state, { getLunarData })(LunarData);
+export default connect(state => state, { getLunarData, initialLoad })(LunarData);
